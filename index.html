@@ -1,0 +1,43 @@
+<html>
+<head>
+<style>
+.video-player {
+width: 640px;
+margin: 0 auto;
+text-align: center;
+}
+</style>
+</head>
+<body>
+<h1> YouTube Video Player</h1>
+<div class="video-player">
+<div>
+<input type="text" id="url" placeholder="Enter YouTube video URL">
+<button onclick="playVideo()">Play</button>
+</div>
+<div id="player"></div>
+</div>
+<script src="https://www.youtube.com/iframe_api"></script>
+ <script>  
+let player;
+function playVideo() {
+      const videoUrl = document.getElementById('url').value;
+      const videoId = extractYouTubeVideoId(videoUrl);
+if (videoId) {
+player = new YT.Player('player', {
+ height: '360',
+ width: '640',
+ videoId: videoId,
+ events: {}
+});
+}
+}
+function extractYouTubeVideoId(url) {
+const videoIdRegex = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|vi|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/|y2u\.be\/)([a-zA-Z0-9_-]{11})/;
+const match = url.match(videoIdRegex);
+return match ? match[1] : null;
+}
+</script>
+<script async src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>
