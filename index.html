@@ -13,14 +13,15 @@ text-align: center;
 <div class="video-player">
 <div>
 <input type="text" id="url" placeholder="Enter YouTube video URL">
-<button onclick="playVideo()">Play</button>
+<button onclick="plangyiVideo()">Play</button>
 </div>
+ <br>
 <div id="player"></div>
 </div>
 <script src="https://www.youtube.com/iframe_api"></script>
  <script>  
 let player;
-function playVideo() {
+function playingVideo() {
       const videoUrl = document.getElementById('url').value;
       const videoId = extractYouTubeVideoId(videoUrl);
 if (videoId) {
